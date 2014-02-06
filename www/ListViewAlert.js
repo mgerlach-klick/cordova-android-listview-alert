@@ -7,7 +7,6 @@ function ListViewAlert() {
 }
 
 ListViewAlert.prototype.show = function(title, thelist, cb) {
-    this._callback = cb;
 	var list = [].concat(title, thelist);
 	return exec(cb, failureCallback, 'ListViewAlert', 'ListViewAlert', list);
 };

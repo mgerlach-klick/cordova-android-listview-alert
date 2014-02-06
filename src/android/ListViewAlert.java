@@ -72,7 +72,13 @@ public class ListViewAlert extends CordovaPlugin {
 				CharSequence[] items = list.toArray(new CharSequence[list.size()]);
 				AlertDialog.Builder builder = new AlertDialog.Builder(new ContextThemeWrapper(
     cordova.getActivity(),android.R.style.Theme_Holo_Dialog));
-				builder.setTitle( thelist.getString(0) );
+				try {
+					builder.setTitle( thelist.getString(0) );
+					// builder.setMessage( "This is a hardcoded message to try whether or not this is feasible!");
+				} catch (JSONException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				} // index 0 contains the title
 				builder.setItems(items, new DialogInterface.OnClickListener() {
 					public void onClick(DialogInterface dialog, int item) {
 						dialog.dismiss();
@@ -90,5 +96,4 @@ public class ListViewAlert extends CordovaPlugin {
 		this.cordova.getActivity().runOnUiThread(runnable);
 	}
 }
-
 
